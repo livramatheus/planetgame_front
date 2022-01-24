@@ -89,6 +89,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--color3);
 }
 
 #footerdivcontainer {
@@ -110,4 +111,18 @@ a:hover {
 
 #footer .logo {
     opacity: 0.3;
+}
+
+#main {
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+}
+
+#main .content {
+    text-align: center;
+}
+
+.content {
+
 }
