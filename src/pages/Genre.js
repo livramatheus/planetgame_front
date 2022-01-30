@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import DataTable from '../components/DataTable';
+import { fetchGenres } from '../services/Genre';
 
 function Genre(props) {
 
@@ -11,18 +11,12 @@ function Genre(props) {
     const title  = "Genres";
 
     useEffect(() => {
-        fetchGenres();
-    }, []);
-
-    const fetchGenres = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/?page=genre&action=getall`).then((res) => {
-            if (res.status === 200) {
-                setRows(res.data.data);
-            }
+        fetchGenres().then((data) => {
+            setRows(data);
         }).catch((err) => {
             console.log(err);
-        })
-    }
+        });
+    }, []);
 
     return (
         <main id="main">

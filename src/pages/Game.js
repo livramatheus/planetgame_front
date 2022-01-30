@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import DataTable from '../components/DataTable';
+import { fetchGames } from '../services/Game';
 
 function Game() {
 
@@ -11,18 +11,12 @@ function Game() {
     const title  = "Games";
 
     useEffect(() => {
-        fetchPublishers();
-    }, []);
-
-    const fetchPublishers = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/?page=game&action=getall`).then((res) => {
-            if (res.status === 200) {
-                setRows(res.data.data);
-            }
+        fetchGames().then((data) => {
+            setRows(data)
         }).catch((err) => {
             console.log(err);
-        })
-    }
+        });
+    }, []);
 
     return (
         <main id="main">

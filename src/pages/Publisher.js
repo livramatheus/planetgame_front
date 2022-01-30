@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import DataTable from '../components/DataTable';
+import { fetchPublishers } from '../services/Publisher';
 
 function Publisher(props) {
 
@@ -11,18 +11,12 @@ function Publisher(props) {
     const title  = "Publishers";
 
     useEffect(() => {
-        fetchPublishers();
-    }, []);
-
-    const fetchPublishers = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/?page=publisher&action=getall`).then((res) => {
-            if (res.status === 200) {
-                setRows(res.data.data);
-            }
+        fetchPublishers().then((data) => {
+            setRows(data);
         }).catch((err) => {
             console.log(err);
         })
-    }
+    }, []);
 
     return (
         <main id="main">
