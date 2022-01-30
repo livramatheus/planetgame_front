@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Open+Sans:wght@300;400;500;700&display=swap');
 
 :root{
     --text-1: #e2e3ea;
@@ -7,6 +7,9 @@
     --color1: #191f57;
     --color2: #0e1124;
     --color3: #0a0b17;
+
+    --coloreven: #111744;
+    --colorodd: #10153b;
     
     --detail1: #1ab73c;
 }
@@ -114,7 +117,7 @@ a:hover {
 }
 
 #main {
-    width: 80%;
+    width: 100%;
     justify-content: center;
     margin: auto;
 }
@@ -123,6 +126,8 @@ a:hover {
     text-align: center;
 }
 
-.content {
-
+.contentstuff {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
 }
