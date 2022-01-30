@@ -32,7 +32,7 @@ const StyledCell = styled(TableCell)(({ theme }) => ({
 
 function DataTable(props) {
 
-    let { rows, cols } = props;
+    let { rows, labels, cols } = props;
 
     return (
         rows && (
@@ -42,8 +42,8 @@ function DataTable(props) {
                         <TableHead>
                             <TableRow>
                                 {
-                                    cols.map((col) => {
-                                        return <StyledHeader key={col}>{col}</StyledHeader>
+                                    labels.map((lbl) => {
+                                        return <StyledHeader key={lbl}>{lbl}</StyledHeader>
                                     })
                                 }
                             </TableRow>
@@ -55,9 +55,15 @@ function DataTable(props) {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     style={{ borderRadius: '0px' }}
                                 >
-                                    <StyledCell component="th" scope="row" style={{ borderRadius: '0px' }}>
-                                        {row.name}
-                                    </StyledCell>
+                                    {
+                                        cols.map((col) => {
+                                            return (
+                                                <StyledCell component="th" scope="row" style={{ borderRadius: '0px' }}>
+                                                    {row[col]}
+                                                </StyledCell>
+                                            )
+                                        })
+                                    }
                                 </StyledRow>
                             ))}
                         </TableBody>

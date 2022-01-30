@@ -6,8 +6,9 @@ import DataTable from '../components/DataTable';
 function Genre(props) {
 
     const [rows, setRows] = useState(null);
-    const cols = ['Name'];
-    const title = "Genres";
+    const labels = ['Name'];
+    const cols   = ['name'];
+    const title  = "Genres";
 
     useEffect(() => {
         fetchGenres();
@@ -31,7 +32,7 @@ function Genre(props) {
                 <h1>{title}</h1>
 
                 <div className="contentstuff">
-                    <DataTable rows={rows} cols={cols} />
+                    <DataTable rows={rows} labels={labels} cols={cols} />
                 </div>
             </div>
         </main>
