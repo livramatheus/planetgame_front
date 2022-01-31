@@ -1,11 +1,15 @@
+import { useState, useEffect } from "react";
+
 function PageTitle(props) {
+    
+    const [randomBg, setRandomBg] = useState(null);
     
     let { title } = props;
     
     const styleDiv = {
         width: '100%',
         height: '20rem',
-        backgroundImage: `url(${process.env.REACT_APP_PUBLIC_URL}/images/pgbn1.jpg)`,
+        backgroundImage: `url(${randomBg})`,
         backgroundSize: 'cover',
         display: 'flex',
         flexDirection: 'column',
@@ -24,6 +28,11 @@ function PageTitle(props) {
         textTransform: 'uppercase',
         fontFamily: `'Abel', 'sans-serif'`
     }
+
+    useEffect(() => {
+        let random = parseInt((Math.random() * 4) + 1);
+        setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/pgbn${random}.jpg`);
+    }, []);
 
     return (
         <div style={styleDiv} >

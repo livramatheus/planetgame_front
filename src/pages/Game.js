@@ -22,10 +22,9 @@ function Game() {
         <main id="main">
             <div className="content">
                 <PageTitle title={title} />
-                
-                <h1>{title}</h1>
 
                 <div className="contentstuff">
+                    <h1 className="contenttilte">{title}</h1>
                     <DataTable rows={rows} labels={labels} cols={cols} />
                 </div>
             </div>

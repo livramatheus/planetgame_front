@@ -8,6 +8,7 @@
     --color2: #0e1124;
     --color3: #0a0b17;
 
+    --colorheader: #0a0f2e; 
     --coloreven: #111744;
     --colorodd: #10153b;
     
@@ -128,6 +129,12 @@ a:hover {
 
 .contentstuff {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 3rem 0;
+}
+
+.content .contenttilte {
+    text-align: left;
+    width: 60%;
 }

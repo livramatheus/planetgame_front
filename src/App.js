@@ -13,7 +13,7 @@ function App() {
         status: {
             bgtableeven: 'var(--coloreven)',
             bgtableodd:  'var(--colorodd)',
-            bgtableheader: 'var(--colorodd)',
+            bgtableheader: 'var(--colorheader)',
             txttable: 'var(--text-1)',
             bdrtable: 'var(--color3)',
         },
