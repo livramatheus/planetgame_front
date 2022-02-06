@@ -95,7 +95,7 @@ function DataTable(props) {
                                     </StyledRow>
                                 ))}
                             {emptyRows > 0 && (
-                                <StyledRow style={{ height: 53 * emptyRows }}>
+                                <StyledRow style={{ height: 52 * emptyRows }}>
                                     <TableCell colSpan={6} />
                                 </StyledRow>
                             )}
