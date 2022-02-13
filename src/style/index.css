@@ -62,6 +62,11 @@ a:hover {
     justify-content: center;
 }
 
+.articlelink {
+    color:  var(--detail1); 
+    text-decoration: underline;
+}
+
 .animatedbtn {
     background-color: var(--text-1);
     width: fit-content;
@@ -137,4 +142,10 @@ a:hover {
 .content .contenttilte {
     text-align: left;
     width: 60%;
+}
+
+.pagearticle {
+    width: 60%;
+    margin: auto;
+    padding: 3rem 0;
 }
