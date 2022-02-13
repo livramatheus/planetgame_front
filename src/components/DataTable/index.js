@@ -12,10 +12,11 @@ import StyledPagination from './StyledPagination';
 import StyledRow from './StyledRow';
 import StyledSkeleton from './StyledSkeleton';
 import StyledTablePaper from './StyledTablePaper';
+import { Link } from 'react-router-dom';
 
 function DataTable(props) {
 
-    let { rows, labels, cols } = props;
+    let { rows, labels, cols, target } = props;
     
     const [page, setPage]               = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -54,14 +55,33 @@ function DataTable(props) {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         {
-                                            cols.map((col) => {
+                                            cols.map((col, x) => {
+                                                if (x == 0 && target) {
+                                                    return (
+                                                        <StyledCell
+                                                            key={col}
+                                                            component="th"
+                                                            scope="row"
+                                                        >
+                                                            <Link
+                                                                to={`/${target}/${row['id']}`}
+                                                                style={{fontWeight: 'bold', textDecoration: 'underline'}}
+                                                            >
+                                                                {row[col]}
+                                                            </Link>
+                                                        </StyledCell>
+                                                    )
+                                                }
+
                                                 return (
                                                     <StyledCell
                                                         key={col}
                                                         component="th"
                                                         scope="row"
                                                     >
-                                                        {row[col]}
+                                                        <span>
+                                                            {row[col]}
+                                                        </span>
                                                     </StyledCell>
                                                 )
                                             })
@@ -69,7 +89,7 @@ function DataTable(props) {
                                     </StyledRow>
                                 ))}
                             {emptyRows > 0 && (
-                                <StyledRow style={{ height: 52 * emptyRows }}>
+                                <StyledRow style={{ height: 53 * emptyRows }}>
                                     <TableCell colSpan={6} />
                                 </StyledRow>
                             )}
