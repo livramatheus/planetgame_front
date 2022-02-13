@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import PageRouter from './components/PageRouter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
 
     return (
         <Router>
+            <ScrollToTop />
+            
             <ThemeProvider theme={theme}>
                 <NavBar />
                 <PageRouter />
