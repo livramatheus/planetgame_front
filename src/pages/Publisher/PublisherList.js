@@ -1,9 +1,10 @@
+import { fetchPublishers } from '../../services/Publisher';
 import { useEffect, useState } from 'react';
-import PageTitle from '../components/PageTitle';
-import DataTable from '../components/DataTable';
-import { fetchPublishers } from '../services/Publisher';
+import PageTitle from '../../components/PageTitle';
+import DataTable from '../../components/DataTable';
+import { Outlet } from 'react-router-dom';
 
-function Publisher(props) {
+function PublisherList() {
 
     const [rows, setRows] = useState(null);
     const labels = ['Name', 'Foundation Date', 'Age'];
@@ -25,11 +26,17 @@ function Publisher(props) {
                 
                 <div className="contentstuff">
                     <h1 className="contenttilte">{title}</h1>
-                    <DataTable rows={rows} labels={labels} cols={cols} />
+                    <DataTable
+                        rows={rows}
+                        labels={labels}
+                        cols={cols}
+                        target="publisher"
+                    />
                 </div>
             </div>
+            <Outlet />
         </main>
     );
 }
 
-export default Publisher;
+export default PublisherList;

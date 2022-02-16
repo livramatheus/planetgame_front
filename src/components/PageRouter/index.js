@@ -6,7 +6,8 @@ import GameList from "../../pages/Game/GameList";
 import Genre from '../../pages/Genre';
 import Home from '../../pages/Home';
 import PrivacyPolicy from "../../pages/PrivacyPolicy";
-import Publisher from '../../pages/Publisher';
+import PublisherDetails from "../../pages/Publisher/PublisherDetails";
+import PublisherList from "../../pages/Publisher/PublisherList";
 
 function PageRouter() {
     return (
@@ -14,7 +15,8 @@ function PageRouter() {
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<GameList />} />
             <Route path="/game/:gameid" element={<GameDetails />} />
-            <Route path="/publisher" element={<Publisher />} />
+            <Route path="/publisher" element={<PublisherList />} />
+            <Route path="/publisher/:publisherid" element={<PublisherDetails />} />
             <Route path="/genre" element={<Genre />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />
             <Route path="/about" element={<About />} />
