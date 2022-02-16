@@ -149,3 +149,11 @@ a:hover {
     margin: auto;
     padding: 3rem 0;
 }
+
+.gamedetails {
+    width: 60%;
+}
+
+.gamedetails em {
+    color: var(--text-2);
+}
