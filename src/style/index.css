@@ -150,10 +150,10 @@ a:hover {
     padding: 3rem 0;
 }
 
-.gamedetails {
+.details {
     width: 60%;
 }
 
-.gamedetails em {
+.details em {
     color: var(--text-2);
 }

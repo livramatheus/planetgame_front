@@ -8,7 +8,7 @@ function PublisherDetails() {
 
     const [publisher, setPublisher] = useState(null);
     let params = useParams();
-    console.log(publisher);
+    
     // Fetches a single publisher, based on URL params
     useEffect(() => {
         if (params.publisherid) {
@@ -26,7 +26,7 @@ function PublisherDetails() {
                 <PageTitle title="Publishers" />
 
                 <div className="contentstuff">
-                    <div className="gamedetails">
+                    <div className="details">
                         <h1>
                             {
                                 publisher ?

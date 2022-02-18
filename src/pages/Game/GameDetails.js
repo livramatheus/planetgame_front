@@ -1,4 +1,3 @@
-import { Skeleton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ColorSkeleton from '../../components/ColorSkeleton';
@@ -27,7 +26,7 @@ function GameDetails() {
                 <PageTitle title="Games" />
 
                 <div className="contentstuff">
-                    <div className="gamedetails">
+                    <div className="details">
                         <h1>
                             {
                                 game ?
