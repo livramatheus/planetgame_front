@@ -27,6 +27,19 @@ function PublisherDetails() {
 
                 <div className="contentstuff">
                     <div className="details">
+                        <div>
+                            {
+                                publisher ?
+                                    <img
+                                        src={`${process.env.REACT_APP_PUBLIC_URL}/images/publisher_logos/${publisher.logo}`}
+                                        style={{width: '30%'}}
+                                        title={`${publisher.name} logo`}
+                                        alt={`${publisher.name} logo`}
+                                    /> :
+                                    <ColorSkeleton width="30%" height="12em" />
+                            }
+                        </div>
+
                         <h1>
                             {
                                 publisher ?
@@ -34,17 +47,6 @@ function PublisherDetails() {
                                     <ColorSkeleton width="25%" />
                             }
                         </h1>
-
-                        <div>
-                            {
-                                publisher ?
-                                    <img
-                                        src={`${process.env.REACT_APP_PUBLIC_URL}/images/${publisher.logo}`}
-                                        style={{width: '30%'}}
-                                    /> :
-                                    <ColorSkeleton width="30%" height="12em" />
-                            }
-                        </div>
 
                         <br />
 
