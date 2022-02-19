@@ -38,7 +38,11 @@ function GameDetails() {
                         <p>
                             {
                                 game ?
-                                    <em>{game.abstract}</em> :
+                                    (
+                                        game.abstract ?
+                                            <em>{game.abstract}</em> :
+                                            <em>(This game has no abstract)</em>
+                                    ) :
                                     <>
                                         <ColorSkeleton width="100%" />
                                         <ColorSkeleton width="75%" />
