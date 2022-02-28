@@ -157,3 +157,18 @@ a:hover {
 .details em {
     color: var(--text-2);
 }
+
+.topactionsrow {
+    margin: 1rem 0;
+    display: flex;
+    width: 60%;
+}
+
+.formcolumns {
+    display: flex;
+    gap: 1rem;
+}
+
+.formcolumns .formitem {
+    width: 50%;
+}
