@@ -8,11 +8,9 @@ import {
     FormControl,
     Button
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import StyledSnackbar from "../StyledSnackbar";
 import { insertGame } from "../../services/Game";
-import { fetchPublishers } from "../../services/Publisher";
-import { fetchGenres } from "../../services/Genre";
 
 const boxStyle = {
     position: 'absolute',
@@ -27,7 +25,16 @@ const boxStyle = {
 
 function NewGameForm(props) {
 
-    let { open, onClickAway } = props;
+    let {
+        open,
+        onClickAway,
+        genres,
+        publishers,
+        setSnackErrorMsg,
+        setSnackErrorOpen,
+        snackErrorMsg,
+        snackErrorOpen
+    } = props;
 
     const [name       , setName       ] = useState("");
     const [releaseDate, setReleaseDate] = useState("");
@@ -35,12 +42,6 @@ function NewGameForm(props) {
     const [genre      , setGenre      ] = useState("");
     const [abstract   , setAbstract   ] = useState("");
     const [userName   , setUserName   ] = useState("");
-
-    const [genres    , setGenres    ] = useState([]);
-    const [publishers, setPublishers] = useState([]);
-
-    const [snackErrorOpen  , setSnackErrorOpen  ] = useState(false);
-    const [snackErrorMsg   , setSnackErrorMsg   ] = useState("");
     
     const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
     const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
@@ -51,24 +52,6 @@ function NewGameForm(props) {
     const onChangeGenre       = (e) => setGenre(e.target.value);
     const onChangeAbstract    = (e) => setAbstract(e.target.value);
     const onChangeUserName    = (e) => setUserName(e.target.value);
-    
-    useEffect(() => {
-        // Get all genres to populate Genre's combobox
-        fetchGenres().then((res) => {
-            setGenres(res);
-        }).catch((err) => {
-            setSnackErrorMsg("Something went wrong. Try again later.");
-            setSnackErrorOpen(true);
-        });
-
-        // Get all publishers to populate Publishers's combobox
-        fetchPublishers().then((res) => {
-            setPublishers(res);
-        }).catch((err) => {
-            setSnackErrorMsg("Something went wrong. Try again later.");
-            setSnackErrorOpen(true);
-        });
-    }, []);
 
     const clearFields = () => {
         setName("");

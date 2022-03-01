@@ -1,4 +1,6 @@
 import { fetchGames } from '../../services/Game';
+import { fetchPublishers } from "../../services/Publisher";
+import { fetchGenres } from "../../services/Genre";
 import PageTitle from '../../components/PageTitle';
 import DataTable from '../../components/DataTable';
 import { useEffect, useState } from 'react';
@@ -9,18 +11,29 @@ import NewGameForm from '../../components/NewGameForm';
 
 function GameList() {
 
-    const [rows, setRows]           = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [rows          , setRows            ] = useState(null);
+    const [genres        , setGenres          ] = useState([]);
+    const [publishers    , setPublishers      ] = useState([]);
+    const [modalOpen     , setModalOpen       ] = useState(false);
+    const [snackErrorOpen, setSnackErrorOpen  ] = useState(false);
+    const [snackErrorMsg , setSnackErrorMsg   ] = useState("");
+
     const labels = ['Name', 'Release Date', 'Publisher', 'Genre'];
     const cols   = ['name', 'release_date', 'publisher', 'genre'];
     const title  = "Games";
 
-    // Fetches all games
     useEffect(() => {
-        fetchGames().then((data) => {
-            setRows(data);
-        }).catch((err) => {
-            console.log(err);
+        Promise.all([
+            fetchGames(),
+            fetchGenres(),
+            fetchPublishers()
+        ]).then((values) => {
+            setRows(values[0]);
+            setGenres(values[1]);
+            setPublishers(values[2]);
+        }).catch((error) => {
+            setSnackErrorMsg("Something went wrong. Try again later.");
+            setSnackErrorOpen(true);
         });
     }, []);
 
@@ -47,6 +60,12 @@ function GameList() {
                     <NewGameForm
                         open={modalOpen}
                         onClickAway={closeModal}
+                        genres={genres}
+                        publishers={publishers}
+                        setSnackErrorMsg={setSnackErrorMsg}
+                        setSnackErrorOpen={setSnackErrorOpen}
+                        snackErrorMsg={snackErrorMsg}
+                        snackErrorOpen={snackErrorOpen}
                     />
 
                     <DataTable
