@@ -75,6 +75,16 @@ function GameDetails() {
                                     <ColorSkeleton width="25%" />
                             }
                         </p>
+                        
+                        <br/>
+
+                        <p>
+                            {
+                                game ?
+                                    <small><em>Game suggested by {game.contributor}</em></small> :
+                                    <ColorSkeleton width="25%" />
+                            }
+                        </p>
                     </div>
                 </div>
             </div>
