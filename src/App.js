@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import PageRouter from './components/PageRouter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ScrollToTop from "./components/ScrollToTop";
+import { AuthenticatorProvider } from "./components/Authenthicator";
 
 function App() {
 
@@ -24,11 +25,13 @@ function App() {
         <Router>
             <ScrollToTop />
             
-            <ThemeProvider theme={theme}>
-                <NavBar />
-                <PageRouter />
-                <Footer />
-            </ThemeProvider>
+            <AuthenticatorProvider>
+                <ThemeProvider theme={theme}>
+                    <NavBar />
+                    <PageRouter />
+                    <Footer />
+                </ThemeProvider>
+            </AuthenticatorProvider>
         </Router>
     );
 }

@@ -172,3 +172,13 @@ a:hover {
 .formcolumns .formitem {
     width: 50%;
 }
+
+.logincolumns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.logincolumns .loginitem {
+    width: 60%;
+}
