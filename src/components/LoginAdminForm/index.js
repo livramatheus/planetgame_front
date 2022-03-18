@@ -7,7 +7,7 @@ import { AuthenticatorContext } from "../Authenthicator";
 
 function LoginAdminForm() {
 
-    const { ctxUserName, ctxFirstName, ctxLastName } = useContext(AuthenticatorContext);
+    const { ctxUserName, ctxFirstName, ctxLastName, ctxIsLoggedIn } = useContext(AuthenticatorContext);
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -40,6 +40,7 @@ function LoginAdminForm() {
                 ctxUserName.setUserName(decodedToken.user_name);
                 ctxFirstName.setFirstName(decodedToken.first_name);
                 ctxLastName.setLastName(decodedToken.last_name);
+                ctxIsLoggedIn.setIsLoggedIn(true);
                 
                 // Empties input fields
                 setUserName("");
