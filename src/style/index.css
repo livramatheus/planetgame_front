@@ -182,3 +182,19 @@ a:hover {
 .logincolumns .loginitem {
     width: 60%;
 }
+
+.approvalalert {
+    background-color: var(--coloreven);
+    color: var(--text-1);
+    width: 60%;
+    margin: 2rem auto;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.approvalalert p {
+    margin: 0;
+}
