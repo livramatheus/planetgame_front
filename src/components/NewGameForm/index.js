@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import StyledSnackbar from "../StyledSnackbar";
 import { insertGame } from "../../services/Game";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const boxStyle = {
     position: 'absolute',
@@ -46,6 +47,8 @@ function NewGameForm(props) {
     const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
     const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
 
+    const [btnLoading, setBtnLoading] = useState(false);
+
     const onChangeName        = (e) => setName(e.target.value);
     const onChangeReleaseDate = (e) => setReleaseDate(e.target.value);
     const onChangePublisher   = (e) => setPublisher(e.target.value);
@@ -66,6 +69,8 @@ function NewGameForm(props) {
         e.preventDefault();
 
         if (name && releaseDate && publisher && genre) {
+            setBtnLoading(true);
+
             const data = {
                 name: name,
                 release_date: releaseDate,
@@ -78,9 +83,11 @@ function NewGameForm(props) {
             insertGame(data).then((res) => {
                 clearFields();
                 onClickAway();
+                setBtnLoading(false);
                 setSnackSuccessMsg(res.data.data)
                 setSnackSuccessOpen(true);
             }).catch((err) => {
+                setBtnLoading(false);
                 setSnackErrorMsg("Something went wrong with your request.");
                 setSnackErrorOpen(true);
             })
@@ -177,7 +184,13 @@ function NewGameForm(props) {
                         </FormControl>
 
                         <FormControl className="formitem" margin="normal">
-                            <Button variant="contained" type="submit">Submit</Button>
+                            <LoadingButton
+                                variant="contained"
+                                type="submit"
+                                loading={btnLoading}
+                            >
+                                Approve
+                            </LoadingButton>
                         </FormControl>
                     </Box>
                 </form>
