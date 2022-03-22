@@ -2,8 +2,19 @@ import axios from 'axios';
 import { prepareData } from './Utils';
 
 const fetchGames = () => {
+    const url = `${process.env.REACT_APP_API_URL}/?page=game&action=getall`;
+    const options = {
+        'headers': {}
+    };
+
+    let token = localStorage.getItem('jwt-key');
+
+    if (token) {
+        options.headers['Authorization'] = `Bearer ${token}`;
+    }
+
     return new Promise((resolve, reject) => {
-        axios.get(`${process.env.REACT_APP_API_URL}/?page=game&action=getall`).then((res) => {
+        axios.get(url, options).then((res) => {
             if (res.status === 200) {
                 resolve(res.data.data);
             }
@@ -14,8 +25,19 @@ const fetchGames = () => {
 };
 
 const fetchGame = (id) => {
+    const url = `${process.env.REACT_APP_API_URL}/?page=game&action=get&params=${id}`;
+    const options = {
+        'headers': {}
+    };
+
+    let token = localStorage.getItem('jwt-key');
+
+    if (token) {
+        options.headers['Authorization'] = `Bearer ${token}`;
+    }
+
     return new Promise((resolve, reject) => {
-        axios.get(`${process.env.REACT_APP_API_URL}/?page=game&action=get&params=${id}`).then((res) => {
+        axios.get(url, options).then((res) => {
             if (res.status === 200) {
                 resolve(res.data.data);
             }
@@ -28,14 +50,14 @@ const fetchGame = (id) => {
 const insertGame = (game) => {
     const url = `${process.env.REACT_APP_API_URL}/?page=game&action=insert`;
     const data = prepareData(game);
-    const headers = {
+    const options = {
         headers: {
             'content-type': 'application/x-www-form-urlencoded'
         }
     }
-
+    
     return new Promise((resolve, reject) => {
-        axios.post(url, data, headers).then((res) => {
+        axios.post(url, data, options).then((res) => {
             resolve(res);
         }).catch((err) => {
             reject(err);
@@ -43,4 +65,22 @@ const insertGame = (game) => {
     })
 }
 
-export { fetchGames, fetchGame, insertGame };
+const approveGame = (id) => {
+    const url = `${process.env.REACT_APP_API_URL}/?page=game&action=approve`;
+    const data = prepareData({ id });
+    const options = {
+        headers: {'Authorization': `Bearer ${localStorage.getItem('jwt-key')}`}
+    };
+
+    return new Promise((resolve, reject) => {
+        axios.post(url, data, options).then((res) => {
+            if (res.status === 200) {
+                resolve(res.data.data);
+            }
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+}
+
+export { fetchGames, fetchGame, insertGame, approveGame };

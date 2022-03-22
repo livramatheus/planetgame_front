@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ApprovalAlert from '../../components/ApprovalAlert';
 import ColorSkeleton from '../../components/ColorSkeleton';
 import PageTitle from '../../components/PageTitle';
 import { fetchGame } from '../../services/Game';
+import StyledSnackbar from "../../components/StyledSnackbar";
 
 function GameDetails() {
 
     const [game, setGame] = useState(null);
     let params = useParams();
+
+    const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
+    const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
+    const [snackErrorOpen  , setSnackErrorOpen  ] = useState(false);
+    const [snackErrorMsg   , setSnackErrorMsg   ] = useState("");
 
     // Fetches a single game, based on URL params
     useEffect(() => {
@@ -19,7 +26,7 @@ function GameDetails() {
             });
         }
     }, [params.gameid]);
-
+    
     return (
         <main id="main">
             <div className="content">
@@ -27,6 +34,19 @@ function GameDetails() {
 
                 <div className="contentstuff">
                     <div className="details">
+                        {
+                            game && (game.approved == 0 && (
+                                <ApprovalAlert
+                                    game={game}
+                                    setGame={setGame}
+                                    setSnackSuccessOpen={setSnackSuccessOpen}
+                                    setSnackSuccessMsg={setSnackSuccessMsg}
+                                    setSnackErrorOpen={setSnackErrorOpen}
+                                    setSnackErrorMsg={setSnackErrorMsg}
+                                />
+                            ))
+                        }
+                        
                         <h1>
                             {
                                 game ?
@@ -34,7 +54,7 @@ function GameDetails() {
                                     <ColorSkeleton width="25%" />
                             }
                         </h1>
-
+                        
                         <p>
                             {
                                 game ?
@@ -88,6 +108,20 @@ function GameDetails() {
                     </div>
                 </div>
             </div>
+
+            <StyledSnackbar
+                message={snackErrorMsg}
+                snackOpen={snackErrorOpen}
+                setSnackOpen={setSnackErrorOpen}
+                severity="error"
+            />
+
+            <StyledSnackbar
+                message={snackSuccessMsg}
+                snackOpen={snackSuccessOpen}
+                setSnackOpen={setSnackSuccessOpen}
+                severity="success"
+            />
         </main>
     );
 }

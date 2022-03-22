@@ -31,7 +31,7 @@ function DataTable(props) {
     }
 
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-    
+
     return (
         rows ? (
             <Paper style={{ width: '60%' }}>
@@ -65,9 +65,14 @@ function DataTable(props) {
                                                         >
                                                             <Link
                                                                 to={`/${target}/${row['id']}`}
-                                                                style={{fontWeight: 'bold', textDecoration: 'underline'}}
+                                                                style={{
+                                                                    fontWeight: 'bold',
+                                                                    textDecoration: 'underline',
+                                                                    color: ((row.approved && row.approved == 0) ? 'var(--detail1)' : 'var(--text1)'),
+                                                                    fontStyle: ((row.approved && row.approved == 0) == 1 ? 'italic' : 'normal')
+                                                                }}
                                                             >
-                                                                {row[col]}
+                                                                {`${row[col]} ${(row.approved && row.approved == 0) ? '*' : ''}`}
                                                             </Link>
                                                         </StyledCell>
                                                     )
