@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logout from "../../components/Logout";
 
 function NavBar() {
     return (
@@ -8,6 +9,7 @@ function NavBar() {
             <Link to="/game">Game</Link>
             <Link to="/publisher">Publisher</Link>
             <Link to="/genre">Genre</Link>
+            <Logout />
         </nav>
     );
 }

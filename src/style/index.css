@@ -55,6 +55,14 @@ a:hover {
     width: 8rem;
 }
 
+#navbar * {
+    cursor: pointer;
+}
+
+#navbar .logout:hover {
+    text-decoration: underline;
+}
+
 #homegreet {
     height: calc(100vh - 5rem);
     display: flex;

@@ -20,10 +20,8 @@ function Logout() {
     }
 
     return (
-        ctxIsLoggedIn.isLoggedIn ? (
-            <span onClick={() => executeLogout()}>Logout</span>
-        ) : (
-            null
+        ctxIsLoggedIn.isLoggedIn && (
+            <span className="logout" onClick={() => executeLogout()}>Logout</span>
         )
     );
 }
