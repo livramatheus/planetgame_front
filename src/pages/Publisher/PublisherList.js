@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PageTitle from '../../components/PageTitle';
 import DataTable from '../../components/DataTable';
 import { Outlet } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 function PublisherList() {
 
@@ -21,6 +22,10 @@ function PublisherList() {
 
     return (
         <main id="main">
+            <Helmet>
+                <title>{title} - Planet Game</title>
+            </Helmet>
+
             <div className="content">
                 <PageTitle title={title} />
                 

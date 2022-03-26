@@ -2,6 +2,7 @@ import { AuthenticatorContext } from "../components/Authenthicator";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
+import {Helmet} from "react-helmet";
 
 function Admin() {
 
@@ -10,6 +11,9 @@ function Admin() {
 
     return (
         <main id="main">
+            <Helmet>
+                <title>Admin's page - Planet Game</title>
+            </Helmet>
             <div className="content">
                 <PageTitle title={title} />
                 

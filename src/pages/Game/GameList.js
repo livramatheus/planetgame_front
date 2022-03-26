@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import NewGameForm from '../../components/NewGameForm';
+import { Helmet } from "react-helmet";
 
 function GameList() {
 
@@ -42,6 +43,10 @@ function GameList() {
     
     return (
         <main id="main">
+            <Helmet>
+                <title>{title} - Planet Game</title>
+            </Helmet>
+
             <div className="content">
                 <PageTitle title={title} />
 

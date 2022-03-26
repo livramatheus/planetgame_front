@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ColorSkeleton from '../../components/ColorSkeleton';
 import PageTitle from '../../components/PageTitle';
 import { fetchPublisher } from '../../services/Publisher';
+import { Helmet } from "react-helmet";
 
 function PublisherDetails() {
 
@@ -22,6 +23,10 @@ function PublisherDetails() {
 
     return (
         <main id="main">
+            <Helmet>
+                <title>{publisher ? `${publisher.name} - Planet Game` : ''}</title>
+            </Helmet>
+
             <div className="content">
                 <PageTitle title="Publishers" />
 
