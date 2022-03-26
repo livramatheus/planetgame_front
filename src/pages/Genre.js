@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import DataTable from '../components/DataTable';
 import { fetchGenres } from '../services/Genre';
+import { Helmet } from "react-helmet";
 
-function Genre(props) {
+function Genre() {
 
     const [rows, setRows] = useState(null);
     const labels = ['Name'];
@@ -20,6 +21,10 @@ function Genre(props) {
 
     return (
         <main id="main">
+            <Helmet>
+                <title>{title} - Planet Game</title>
+            </Helmet>
+
             <div className="content">
                 <PageTitle title={title} />
                 

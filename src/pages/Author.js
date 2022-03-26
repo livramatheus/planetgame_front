@@ -1,6 +1,12 @@
+import { Helmet } from "react-helmet";
+
 function Author() {
     return (
         <div className="pagearticle">
+            <Helmet>
+                <title>Author - Planet Game</title>
+            </Helmet>
+
             <h1>Author of Planet Game</h1>
             
             <p>

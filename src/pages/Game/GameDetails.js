@@ -5,6 +5,7 @@ import ColorSkeleton from '../../components/ColorSkeleton';
 import PageTitle from '../../components/PageTitle';
 import { fetchGame } from '../../services/Game';
 import StyledSnackbar from "../../components/StyledSnackbar";
+import { Helmet } from "react-helmet";
 
 function GameDetails() {
 
@@ -29,6 +30,10 @@ function GameDetails() {
     
     return (
         <main id="main">
+            <Helmet>
+                <title>{game ? `${game.name} - Planet Game` : ''}</title>
+            </Helmet>
+
             <div className="content">
                 <PageTitle title="Games" />
 
