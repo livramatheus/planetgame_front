@@ -45,7 +45,6 @@ function HomeGreet() {
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </div>
                 <AnimatedBtn to="/game" label="BROWSE GAMES" />
-
             </div>
             <div id="brosegamesforeground" style={styleForeground} data-aos="fade-left" data-aos-once="true"></div>
         </div>

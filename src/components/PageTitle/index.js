@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
+import useResponsive from "../../hooks/useResponsive";
 
 function PageTitle(props) {
     
-    const [randomBg, setRandomBg] = useState(null);
-    
     let { title } = props;
+    
+    const [randomBg, setRandomBg] = useState(null);
+    const isResponsive = useResponsive();
+
+    const fontSize  = isResponsive ? '8rem'  : '15rem';
+    const divHeight = isResponsive ? '10rem' : '20rem';
     
     const styleDiv = {
         width: '100%',
-        height: '20rem',
+        height: divHeight,
         backgroundImage: `url(${randomBg})`,
         backgroundSize: 'cover',
         display: 'flex',
@@ -17,9 +22,9 @@ function PageTitle(props) {
     }
 
     const styleH1 = {
-        fontSize: '15rem',
-        lineHeight: '15rem',
-        height: '15rem',
+        fontSize: fontSize,
+        lineHeight: fontSize,
+        height: fontSize,
         color: 'white',
         opacity: '0.1',
         overflow: 'hidden',

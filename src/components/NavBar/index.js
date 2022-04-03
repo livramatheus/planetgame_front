@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
-import Logout from "../../components/Logout";
+import MobileNavBar from "./MobileNavBar";
+import DesktopNavBar from "./DesktopNavBar";
+import useResponsive from "../../hooks/useResponsive";
 
 function NavBar() {
-    return (
-        <nav id="navbar">
-            <Link className="logo" to="/" title="Planet Game"></Link>
-            <Link to="/">Home</Link>
-            <Link to="/game">Game</Link>
-            <Link to="/publisher">Publisher</Link>
-            <Link to="/genre">Genre</Link>
-            <Logout />
-        </nav>
-    );
+
+    const isResponsive = useResponsive();
+
+    if (isResponsive) {
+        return <MobileNavBar />
+    }
+    
+    return <DesktopNavBar />
 }
 
 export default NavBar;
