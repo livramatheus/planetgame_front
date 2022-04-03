@@ -5,24 +5,13 @@ import {
     Select,
     TextField,
     InputLabel,
-    FormControl,
-    Button
+    FormControl
 } from "@mui/material";
 import { useState } from "react";
 import StyledSnackbar from "../StyledSnackbar";
 import { insertGame } from "../../services/Game";
 import LoadingButton from '@mui/lab/LoadingButton';
-
-const boxStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '60%',
-    bgcolor: 'var(--coloreven)',
-    boxShadow: 24,
-    p: 3
-}
+import useResponsive from "../../hooks/useResponsive";
 
 function NewGameForm(props) {
 
@@ -49,6 +38,8 @@ function NewGameForm(props) {
 
     const [btnLoading, setBtnLoading] = useState(false);
 
+    const isResponsive = useResponsive();
+
     const onChangeName        = (e) => setName(e.target.value);
     const onChangeReleaseDate = (e) => setReleaseDate(e.target.value);
     const onChangePublisher   = (e) => setPublisher(e.target.value);
@@ -63,6 +54,19 @@ function NewGameForm(props) {
         setGenre("");
         setAbstract("");
         setUserName("");
+    }
+
+    const formWidth = isResponsive ? '90%' : '50%';
+
+    const boxStyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: formWidth,
+        bgcolor: 'var(--coloreven)',
+        boxShadow: 24,
+        p: 3
     }
 
     const handleSubmit = (e) => {

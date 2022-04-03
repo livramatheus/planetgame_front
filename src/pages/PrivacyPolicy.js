@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 function PrivacyPolicy() {
     return (
-        <div style={{width: '60%', margin: 'auto'}}>
+        <div className="pagearticle">
             <Helmet>
                 <title>Privacy Policy - Planet Game</title>
             </Helmet>

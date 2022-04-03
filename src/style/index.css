@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Open+Sans:wght@300;400;500;700&display=swap');
 
-:root{
+:root {
     --text-1: #e2e3ea;
     --text-2: #6e707c;
 
@@ -8,10 +8,10 @@
     --color2: #0e1124;
     --color3: #0a0b17;
 
-    --colorheader: #0a0f2e; 
+    --colorheader: #0a0f2e;
     --coloreven: #111744;
     --colorodd: #10153b;
-    
+
     --detail1: #1ab73c;
 }
 
@@ -52,7 +52,7 @@ a:hover {
     background-size: contain;
     background-position: center;
     height: 4rem;
-    width: 8rem;
+    min-width: 8rem;
 }
 
 #navbar * {
@@ -63,6 +63,13 @@ a:hover {
     text-decoration: underline;
 }
 
+#navbar .navbar-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
 #homegreet {
     height: calc(100vh - 5rem);
     display: flex;
@@ -71,7 +78,7 @@ a:hover {
 }
 
 .articlelink {
-    color:  var(--detail1); 
+    color: var(--detail1);
     text-decoration: underline;
 }
 
@@ -85,6 +92,7 @@ a:hover {
     cursor: pointer;
     font-size: 1.2rem;
     transition: 0.2s ease-in-out;
+    text-align: center;
 }
 
 .animatedbtn:hover {
@@ -99,7 +107,7 @@ a:hover {
     justify-content: center;
     width: 25%;
     gap: 3rem;
-}  
+}
 
 #footer {
     height: 50vh;
@@ -205,4 +213,80 @@ a:hover {
 
 .approvalalert p {
     margin: 0;
+}
+
+.hamburger-react {
+    display: none;
+}
+
+.backdrop {
+    width: 100%;
+    background-color: rgba(50, 211, 17, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+@media (max-width: 1080px) {
+    #brosegamesforeground {
+        display: none;
+    }
+
+    #homegreet {
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    #browsegamesinfo {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        gap: 6rem;
+    }
+
+    .hamburger-react {
+        display: block;
+    }
+
+    #navbar {
+        padding: 0 2rem;
+        justify-content: space-between;
+    }
+
+    #navbar .navbar-links {
+        background-color: var(--colorodd);
+        flex-direction: column;
+        padding: 2rem 4rem;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        z-index: 3;
+        height: calc(100% - 5rem);
+        box-shadow: 30px 0 1px 0 rgba(0, 0, 0, 0.3);
+        width: 80%;
+    }
+
+    .navbar-links .logo {
+        display: none;
+    }
+
+    .contentstuff {
+        padding: 1rem;
+    }
+
+    .content .contenttilte,
+    .topactionsrow,
+    .details {
+        width: 100%;
+    }
+
+    .pagearticle {
+        width: 90%;
+    }
+
 }

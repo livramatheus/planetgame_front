@@ -13,6 +13,7 @@ import StyledRow from './StyledRow';
 import StyledSkeleton from './StyledSkeleton';
 import StyledTablePaper from './StyledTablePaper';
 import { Link } from 'react-router-dom';
+import useResponsive from "../../hooks/useResponsive";
 
 function DataTable(props) {
 
@@ -21,6 +22,8 @@ function DataTable(props) {
     const [page, setPage]               = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     
+    const isResponsive = useResponsive();
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     }
@@ -32,9 +35,13 @@ function DataTable(props) {
 
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+    const paperStyle = {
+        width: isResponsive ? '100%' : '60%'
+    }
+
     return (
         rows ? (
-            <Paper style={{ width: '60%' }}>
+            <Paper style={paperStyle}>
                 <TableContainer>
                     <Table aria-label="simple table" >
                         <TableHead>
