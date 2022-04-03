@@ -9,7 +9,7 @@ function HomeGreet() {
     const [randomFg, setRandomFg] = useState(null);
 
     useEffect(() => {
-        let random = parseInt((Math.random() * 2) + 1);
+        let random = parseInt((Math.random() * 5) + 1);
         setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/background${random}.png`);
         setRandomFg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/foreground${random}.png`);
     }, []);
