@@ -27,7 +27,10 @@ function About() {
                     Development based on professional Git workflow, taking advantage of branches to improve versioning
                 </li>
                 <li>
-                    Automated deploy for <b>test</b> and <b>production</b> branches
+                    Automated deploy for <b>test</b> and <b>production</b> branches, both in front and back-end
+                </li>
+                <li>
+                    JWT token (built from scratch) for rights validation: any user can view and insert games, but only admins can approve it
                 </li>
             </ul>
 
@@ -35,7 +38,7 @@ function About() {
 
             <ul>
                 <li>
-                    <a className="articlelink" href="https://reactjs.org/">React</a>
+                    Developed with <a className="articlelink" href="https://reactjs.org/">React</a>
                 </li>
                 <li>Clean file organization</li>
                 <li>Interface built from scratch with HTML and Vanilla CSS</li>
@@ -45,18 +48,18 @@ function About() {
 
             <ul>
                 <li>
-                    <a className="articlelink" href="https://www.php.net/">Vanilla PHP</a>
+                    Developed with <a className="articlelink" href="https://www.php.net/">Vanilla PHP</a>
                 </li>
                 <li>Routing system developed from scratch</li>
                 <li>API based: accepts requests and returns JSON data</li>
                 <li>Elegant file inclusion with Namespaces + Autoloader</li>
                 <li>Backed by unit tests <a className="articlelink" href="https://phpunit.de/">(PHPUnit)</a></li>
-                <li>Third party <a className="articlelink" href="https://getcomposer.org/">Composer</a> packages included</li>
+                <li>Error logging system</li>
             </ul>
 
             <br/>
 
-            <h2>Source code</h2>
+            <h2>More info and source code</h2>
 
             <p>
                 You may find detailed info and the source code about this project here:
