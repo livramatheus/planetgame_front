@@ -35,7 +35,7 @@ function PageTitle(props) {
 
     useEffect(() => {
         let random = parseInt((Math.random() * 4) + 1);
-        setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/page_title/pgbn${random}.jpg`);
+        setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/page_title/pgbn${random}.webp`);
     }, []);
 
     return (
