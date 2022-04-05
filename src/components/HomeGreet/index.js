@@ -42,7 +42,7 @@ function HomeGreet() {
                 <div>
                     PlanetGame is a game database prototype website. Here you can find information about games, genres and publishers.
                     <br />
-                    Didn't found your game? You can fill out the form and sent it for approval.
+                    Didn't found your game? You can fill out the form and send it for approval.
                 </div>
                 <AnimatedBtn to="/game" label="BROWSE GAMES" />
             </div>
