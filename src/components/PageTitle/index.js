@@ -8,7 +8,6 @@ function PageTitle(props) {
     const [randomBg, setRandomBg] = useState(null);
     const isResponsive = useResponsive();
 
-    const fontSize  = isResponsive ? '8rem'  : '15rem';
     const divHeight = isResponsive ? '10rem' : '20rem';
     
     const styleDiv = {
@@ -22,9 +21,9 @@ function PageTitle(props) {
     }
 
     const styleH1 = {
-        fontSize: fontSize,
-        lineHeight: fontSize,
-        height: fontSize,
+        fontSize: '16vw',
+        lineHeight: '16vw',
+        height: '16vw',
         color: 'white',
         opacity: '0.1',
         overflow: 'hidden',
