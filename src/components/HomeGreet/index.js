@@ -10,8 +10,8 @@ function HomeGreet() {
 
     useEffect(() => {
         let random = parseInt((Math.random() * 5) + 1);
-        setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/background${random}.png`);
-        setRandomFg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/foreground${random}.png`);
+        setRandomBg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/background${random}.webp`);
+        setRandomFg(`${process.env.REACT_APP_PUBLIC_URL}/images/home_greet/foreground${random}.webp`);
     }, []);
 
     useEffect(() => {
@@ -40,9 +40,9 @@ function HomeGreet() {
         <div id="homegreet" style={styleBackground}>
             <div id="browsegamesinfo" data-aos="fade-right" data-aos-once="true">
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    PlanetGame is a game database prototype website. Here you can find information about games, genres and publishers.
+                    <br />
+                    Didn't found your game? You can fill out the form and send it for approval.
                 </div>
                 <AnimatedBtn to="/game" label="BROWSE GAMES" />
             </div>
