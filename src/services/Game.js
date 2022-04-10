@@ -83,4 +83,22 @@ const approveGame = (id) => {
     })
 }
 
-export { fetchGames, fetchGame, insertGame, approveGame };
+const deleteGame = (id) => {
+    const url = `${process.env.REACT_APP_API_URL}/?page=game&action=delete`;
+    const data = prepareData({ id });
+    const options = {
+        headers: {'Authorization': `Bearer ${localStorage.getItem('jwt-key')}`}
+    };
+
+    return new Promise((resolve, reject) => {
+        axios.post(url, data, options).then((res) => {
+            if (res.status === 200) {
+                resolve(res.data.data);
+            }
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+}
+
+export { fetchGames, fetchGame, insertGame, approveGame, deleteGame };
