@@ -7,11 +7,11 @@ import {
     InputLabel,
     FormControl
 } from "@mui/material";
-import { useState } from "react";
-import StyledSnackbar from "../StyledSnackbar";
+import { useContext, useState } from "react";
 import { insertGame } from "../../services/Game";
 import LoadingButton from '@mui/lab/LoadingButton';
 import useResponsive from "../../hooks/useResponsive";
+import { SnackContext } from "../Snack";
 
 function NewGameForm(props) {
 
@@ -19,11 +19,7 @@ function NewGameForm(props) {
         open,
         onClickAway,
         genres,
-        publishers,
-        setSnackErrorMsg,
-        setSnackErrorOpen,
-        snackErrorMsg,
-        snackErrorOpen
+        publishers
     } = props;
 
     const [name       , setName       ] = useState("");
@@ -32,13 +28,15 @@ function NewGameForm(props) {
     const [genre      , setGenre      ] = useState("");
     const [abstract   , setAbstract   ] = useState("");
     const [userName   , setUserName   ] = useState("");
-    
-    const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
-    const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
-
-    const [btnLoading, setBtnLoading] = useState(false);
+    const [btnLoading , setBtnLoading ] = useState(false);
 
     const isResponsive = useResponsive();
+
+    const {
+        setSeverity,
+        setMessage,
+        setSnackOpen
+    } = useContext(SnackContext);
 
     const onChangeName        = (e) => setName(e.target.value);
     const onChangeReleaseDate = (e) => setReleaseDate(e.target.value);
@@ -88,16 +86,19 @@ function NewGameForm(props) {
                 clearFields();
                 onClickAway();
                 setBtnLoading(false);
-                setSnackSuccessMsg(res.data.data)
-                setSnackSuccessOpen(true);
+                setMessage(res.data.data)
+                setSnackOpen(true);
+                setSeverity("success");
             }).catch((err) => {
                 setBtnLoading(false);
-                setSnackErrorMsg("Something went wrong with your request.");
-                setSnackErrorOpen(true);
+                setMessage("Something went wrong with your request.");
+                setSnackOpen(true);
+                setSeverity("error");
             })
         } else {
-            setSnackErrorMsg("Please, fill all fields correctly!");
-            setSnackErrorOpen(true);
+            setMessage("Please, fill all fields correctly!");
+            setSnackOpen(true);
+            setSeverity("error");
         }
     }
 
@@ -199,19 +200,6 @@ function NewGameForm(props) {
                     </Box>
                 </form>
             </Modal>
-            <StyledSnackbar
-                message={snackErrorMsg}
-                snackOpen={snackErrorOpen}
-                setSnackOpen={setSnackErrorOpen}
-                severity="error"
-            />
-
-            <StyledSnackbar
-                message={snackSuccessMsg}
-                snackOpen={snackSuccessOpen}
-                setSnackOpen={setSnackSuccessOpen}
-                severity="success"
-            />
         </>
     );
 }
