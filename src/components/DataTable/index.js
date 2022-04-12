@@ -75,11 +75,11 @@ function DataTable(props) {
                                                                 style={{
                                                                     fontWeight: 'bold',
                                                                     textDecoration: 'underline',
-                                                                    color: ((row.approved && row.approved == 0) ? 'var(--detail1)' : 'var(--text1)'),
-                                                                    fontStyle: ((row.approved && row.approved == 0) == 1 ? 'italic' : 'normal')
+                                                                    color: ((row && row.approved == 0) ? 'var(--detail1)' : 'var(--text1)'),
+                                                                    fontStyle: ((row && row.approved == 0) == 1 ? 'italic' : 'normal')
                                                                 }}
                                                             >
-                                                                {`${row[col]} ${(row.approved && row.approved == 0) ? '*' : ''}`}
+                                                                {`${row[col]} ${(row && row.approved == 0) ? '*' : ''}`}
                                                             </Link>
                                                         </StyledCell>
                                                     )

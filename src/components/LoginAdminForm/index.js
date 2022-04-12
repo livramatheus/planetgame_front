@@ -1,9 +1,9 @@
 import { Box, FormControl, TextField, Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { login } from "../../services/Admin";
-import StyledSnackbar from "../StyledSnackbar";
 import jwt_decode from "jwt-decode";
 import { AuthenticatorContext } from "../Authenthicator";
+import { SnackContext } from "../Snack";
 
 function LoginAdminForm() {
 
@@ -12,11 +12,11 @@ function LoginAdminForm() {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     
-    const [snackErrorMsg , setSnackErrorMsg]  = useState('');
-    const [snackErrorOpen, setSnackErrorOpen] = useState(false);
-
-    const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
-    const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
+    const {
+        setSeverity,
+        setMessage,
+        setSnackOpen
+    } = useContext(SnackContext);
 
     const validateLoginForm = () => {
         return (userName.trim() && password.trim());
@@ -47,13 +47,15 @@ function LoginAdminForm() {
                 setPassword("");
                 
                 // Triggers success message
-                setSnackSuccessMsg("You have logged in successfully!");
-                setSnackSuccessOpen(true);
+                setMessage("You have logged in successfully!");
+                setSnackOpen(true);
+                setSeverity("success");
             }
         }).catch((err) => {
             // Triggers error message
-            setSnackErrorMsg(err.response.data.data || "Unexpected error. Try again.");
-            setSnackErrorOpen(true);
+            setMessage(err.response.data.data || "Unexpected error. Try again.");
+            setSnackOpen(true);
+            setSeverity("error");
         });
     }
 
@@ -66,8 +68,9 @@ function LoginAdminForm() {
         if (validateLoginForm()) {
             sendData();
         } else {
-            setSnackErrorMsg("Please, fill the fields correctly.");
-            setSnackErrorOpen(true);
+            setMessage("Please, fill the fields correctly.");
+            setSnackOpen(true);
+            setSeverity("error");
         }
     }
 
@@ -112,20 +115,6 @@ function LoginAdminForm() {
                     </div>
                 </Box>
             </form>
-            
-            <StyledSnackbar
-                message={snackErrorMsg}
-                snackOpen={snackErrorOpen}
-                setSnackOpen={setSnackErrorOpen}
-                severity="error"
-            />
-
-            <StyledSnackbar
-                message={snackSuccessMsg}
-                snackOpen={snackSuccessOpen}
-                setSnackOpen={setSnackSuccessOpen}
-                severity="success"
-            />
         </div>
     );
 }

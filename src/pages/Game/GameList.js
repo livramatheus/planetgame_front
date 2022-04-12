@@ -3,12 +3,13 @@ import { fetchPublishers } from "../../services/Publisher";
 import { fetchGenres } from "../../services/Genre";
 import PageTitle from '../../components/PageTitle';
 import DataTable from '../../components/DataTable';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import NewGameForm from '../../components/NewGameForm';
 import { Helmet } from "react-helmet";
+import { SnackContext } from '../../components/Snack';
 
 function GameList() {
 
@@ -16,8 +17,12 @@ function GameList() {
     const [genres        , setGenres          ] = useState([]);
     const [publishers    , setPublishers      ] = useState([]);
     const [modalOpen     , setModalOpen       ] = useState(false);
-    const [snackErrorOpen, setSnackErrorOpen  ] = useState(false);
-    const [snackErrorMsg , setSnackErrorMsg   ] = useState("");
+
+    const {
+        setSeverity,
+        setMessage,
+        setSnackOpen
+    } = useContext(SnackContext);
 
     const labels = ['Name', 'Release Date', 'Publisher', 'Genre'];
     const cols   = ['name', 'release_date', 'publisher', 'genre'];
@@ -33,8 +38,9 @@ function GameList() {
             setGenres(values[1]);
             setPublishers(values[2]);
         }).catch((error) => {
-            setSnackErrorMsg("Something went wrong. Try again later.");
-            setSnackErrorOpen(true);
+            setMessage("Something went wrong. Try again later.");
+            setSnackOpen(true);
+            setSeverity("error")
         });
     }, []);
 
@@ -67,10 +73,6 @@ function GameList() {
                         onClickAway={closeModal}
                         genres={genres}
                         publishers={publishers}
-                        setSnackErrorMsg={setSnackErrorMsg}
-                        setSnackErrorOpen={setSnackErrorOpen}
-                        snackErrorMsg={snackErrorMsg}
-                        snackErrorOpen={snackErrorOpen}
                     />
 
                     <DataTable

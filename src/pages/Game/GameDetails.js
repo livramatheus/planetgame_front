@@ -4,18 +4,12 @@ import ApprovalAlert from '../../components/ApprovalAlert';
 import ColorSkeleton from '../../components/ColorSkeleton';
 import PageTitle from '../../components/PageTitle';
 import { fetchGame } from '../../services/Game';
-import StyledSnackbar from "../../components/StyledSnackbar";
 import { Helmet } from "react-helmet";
 
 function GameDetails() {
 
     const [game, setGame] = useState(null);
     let params = useParams();
-
-    const [snackSuccessOpen, setSnackSuccessOpen] = useState(false);
-    const [snackSuccessMsg , setSnackSuccessMsg ] = useState("");
-    const [snackErrorOpen  , setSnackErrorOpen  ] = useState(false);
-    const [snackErrorMsg   , setSnackErrorMsg   ] = useState("");
 
     // Fetches a single game, based on URL params
     useEffect(() => {
@@ -44,10 +38,6 @@ function GameDetails() {
                                 <ApprovalAlert
                                     game={game}
                                     setGame={setGame}
-                                    setSnackSuccessOpen={setSnackSuccessOpen}
-                                    setSnackSuccessMsg={setSnackSuccessMsg}
-                                    setSnackErrorOpen={setSnackErrorOpen}
-                                    setSnackErrorMsg={setSnackErrorMsg}
                                 />
                             ))
                         }
@@ -113,20 +103,6 @@ function GameDetails() {
                     </div>
                 </div>
             </div>
-
-            <StyledSnackbar
-                message={snackErrorMsg}
-                snackOpen={snackErrorOpen}
-                setSnackOpen={setSnackErrorOpen}
-                severity="error"
-            />
-
-            <StyledSnackbar
-                message={snackSuccessMsg}
-                snackOpen={snackSuccessOpen}
-                setSnackOpen={setSnackSuccessOpen}
-                severity="success"
-            />
         </main>
     );
 }
