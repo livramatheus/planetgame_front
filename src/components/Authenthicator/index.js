@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 export const AuthenticatorContext = createContext(null);
@@ -10,12 +10,12 @@ export const AuthenticatorProvider = ({ children }) => {
     const [firstName  , setFirstName  ] = useState('');
     const [lastName   , setLastName   ] = useState('');
 
-    useState(() => {
+    useEffect(() => {
         let lsToken = localStorage.getItem('jwt-key');
 
         /**
          * If the JWT token is already stored in local storage,
-         * decodes is and update state
+         * decodes it and update state
          */ 
         if (lsToken) {
             let decodedToken = jwt_decode(lsToken);

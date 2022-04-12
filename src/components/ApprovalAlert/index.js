@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
+import Cancel from "@mui/icons-material/Cancel";
 import Check from "@mui/icons-material/Check";
 import { AuthenticatorContext } from "../../components/Authenthicator";
-import { approveGame } from "../../services/Game";
+import { approveGame, deleteGame } from "../../services/Game";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { SnackContext } from "../Snack";
 
@@ -42,6 +43,28 @@ function ApprovalAlert(props) {
         });
     }
 
+    const remove = () => {
+        setBtnLoading(true);
+
+        deleteGame(game.id).then((res) => {
+            setBtnLoading(false);
+            setMessage(res);
+            setSnackOpen(true);
+            setSeverity("success");
+
+            setGame(() => {
+                const copy = {...game};
+                copy.approved = 1;
+                return copy;
+            });
+        }).catch((err) => {
+            setBtnLoading(false);
+            setMessage(err.response.data.data);
+            setSnackOpen(true);
+            setSeverity("error");
+        });
+    }
+
     return (
         ctxIsLoggedIn.isLoggedIn ? (
             <div className="approvalalert">
@@ -55,6 +78,15 @@ function ApprovalAlert(props) {
                         onClick={() => approve()}
                     >
                         Approve
+                    </LoadingButton>
+                    <LoadingButton
+                        startIcon={<Cancel />}
+                        loading={btnLoading}
+                        loadingPosition="start"
+                        variant="contained"
+                        onClick={() => remove()}
+                    >
+                        Remove
                     </LoadingButton>
                 </div>
             </div>
