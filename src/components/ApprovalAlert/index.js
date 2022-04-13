@@ -5,6 +5,7 @@ import { AuthenticatorContext } from "../../components/Authenthicator";
 import { approveGame, deleteGame } from "../../services/Game";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { SnackContext } from "../Snack";
+import { useNavigate } from 'react-router-dom';
 
 function ApprovalAlert(props) {
 
@@ -14,13 +15,15 @@ function ApprovalAlert(props) {
     } = props;
 
     const [btnLoading, setBtnLoading] = useState(false);
+    let history = useNavigate();
+
     const {
         setSeverity,
         setMessage,
         setSnackOpen
     } = useContext(SnackContext);
     const { ctxIsLoggedIn } = useContext(AuthenticatorContext);
-
+    
     const approve = () => {
         setBtnLoading(true);
 
@@ -51,12 +54,7 @@ function ApprovalAlert(props) {
             setMessage(res);
             setSnackOpen(true);
             setSeverity("success");
-
-            setGame(() => {
-                const copy = {...game};
-                copy.approved = 1;
-                return copy;
-            });
+            history("/game");
         }).catch((err) => {
             setBtnLoading(false);
             setMessage(err.response.data.data);
