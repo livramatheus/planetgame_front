@@ -32,7 +32,7 @@ export const SnackProvider = ({ children }) => {
             {children}
             <Snackbar
                 open={snackOpen}
-                autoHideDuration={1500}
+                autoHideDuration={3000}
                 onClose={handleCloseSnack}
             >
                 <StyledAlert severity={severity} >{message}</StyledAlert>
