@@ -38,7 +38,7 @@ function GameList() {
             setGenres(values[1]);
             setPublishers(values[2]);
         }).catch((error) => {
-            setMessage("Something went wrong. Try again later.");
+            setMessage(error.response.data.data);
             setSnackOpen(true);
             setSeverity("error")
         });
