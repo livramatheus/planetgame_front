@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PageTitle from '../components/PageTitle';
 import DataTable from '../components/DataTable';
 import { fetchGenres } from '../services/Genre';
 import { Helmet } from "react-helmet";
+import { SnackContext } from '../components/Snack';
 
 function Genre() {
 
@@ -11,11 +12,19 @@ function Genre() {
     const cols   = ['name'];
     const title  = "Genres";
 
+    const {
+        setSeverity,
+        setMessage,
+        setSnackOpen
+    } = useContext(SnackContext);
+
     useEffect(() => {
         fetchGenres().then((data) => {
             setRows(data);
         }).catch((err) => {
-            console.log(err);
+            setMessage(err.response.data.data);
+            setSnackOpen(true);
+            setSeverity("error")
         });
     }, []);
 
