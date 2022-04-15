@@ -91,7 +91,7 @@ function NewGameForm(props) {
                 setSeverity("success");
             }).catch((err) => {
                 setBtnLoading(false);
-                setMessage("Something went wrong with your request.");
+                setMessage(err.response.data.data);
                 setSnackOpen(true);
                 setSeverity("error");
             })
