@@ -334,10 +334,10 @@
 
 <h4>Mobile</h4>
 <div style="display: flex; gap: 0.2rem">
-    <img alt="Mobile 1" title="Main Page" src="./public/images/github/1_m.webp" height="340"/>
-    <img alt="Mobile 2" title="Hamburger Menu" src="./public/images/github/2_m.webp" height="340"/>
-    <img alt="Mobile 3" title="Data Table" src="./public/images/github/3_m.webp" height="340"/>
-    <img alt="Mobile 4" title="New Game Form" src="./public/images/github/4_m.webp" height="340"/>
+    <img alt="Mobile 1" title="Main Page" src="./public/images/github/1_m.webp" height="360"/>
+    <img alt="Mobile 2" title="Hamburger Menu" src="./public/images/github/2_m.webp" height="360"/>
+    <img alt="Mobile 3" title="Data Table" src="./public/images/github/3_m.webp" height="360"/>
+    <img alt="Mobile 4" title="New Game Form" src="./public/images/github/4_m.webp" height="360"/>
 </div>
 
 <h4>Desktop</h4>
@@ -345,18 +345,18 @@
 <div style="display: flex; flex-direction: column; gap: 0.2rem">
 
 <div style="display: flex; gap: 0.2rem">
-    <img alt="Desktop 1" title="Main Page" src="./public/images/github/1_d.webp" height="280"/>
-    <img alt="Desktop 2" title="Data table" src="./public/images/github/2_d.webp" height="280"/>
+    <img alt="Desktop 1" title="Main Page" src="./public/images/github/1_d.webp" height="240"/>
+    <img alt="Desktop 2" title="Data table" src="./public/images/github/2_d.webp" height="240"/>
 </div>
 
 <div style="display: flex; gap: 0.2rem">
-    <img alt="Desktop 3" title="New Game Form" src="./public/images/github/3_d.webp" height="280"/>
-    <img alt="Desktop 4" title="Admin Login Form" src="./public/images/github/4_d.webp" height="280"/>
+    <img alt="Desktop 3" title="New Game Form" src="./public/images/github/3_d.webp" height="240"/>
+    <img alt="Desktop 4" title="Admin Login Form" src="./public/images/github/4_d.webp" height="240"/>
 </div>
 
 <div style="display: flex; gap: 0.2rem">
-    <img alt="Desktop 5" title="Admin Panel" src="./public/images/github/5_d.webp" height="280"/>
-    <img alt="Desktop 6" title="Admin Actions" src="./public/images/github/6_d.webp" height="280"/>
+    <img alt="Desktop 5" title="Admin Panel" src="./public/images/github/5_d.webp" height="240"/>
+    <img alt="Desktop 6" title="Admin Actions" src="./public/images/github/6_d.webp" height="240"/>
 </div>
 
 <h3 id="technologies-front-br">🔨 Tecnologias</h3>
