@@ -1,0 +1,1 @@
+These are the file templates to create new banners following the same design system of the existing ones.
